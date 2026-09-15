@@ -22,6 +22,7 @@ interface Props {
   busy: boolean;
   error: string | null;
   onPlayAgain: () => void;
+  primaryLabelOverride?: string;
   onChangeTopic?: () => void;
   onSubmitFeedback?: (rating: ResultFeedbackRating, issue: string) => Promise<void>;
   resultResponse?: ResultFeedbackResponse | null;
@@ -50,7 +51,7 @@ function ArgumentCard({
       <div className="arg-head">
         <span className="arg-name">
           {arg.name}
-          {isMe ? ' (you)' : ''}
+          {isMe ? ' (sample for your side)' : ''}
         </span>
         {isWinner && (
           <span className="arg-win-tag">
@@ -80,6 +81,7 @@ export function VerdictScreen({
   busy,
   error,
   onPlayAgain,
+  primaryLabelOverride,
   onChangeTopic,
   onSubmitFeedback,
   resultResponse = null,
@@ -223,16 +225,17 @@ export function VerdictScreen({
     if (iAmReady) statusLine = `You're ready for Round ${nextRoundNumber}.`;
     else if (oppReady) statusLine = `${oppName} is ready for Round ${nextRoundNumber}.`;
   }
+  if (primaryLabelOverride) primaryLabel = primaryLabelOverride;
 
   const share = async () => {
     const winnerLine = isTie
       ? 'It ended in a tie.'
       : `${v.winner === 'A' ? v.args.a.name : v.args.b.name} won.`;
-    const text = `VERDICT on "${round.topicText}"\n${winnerLine}\n\n"${v.ruling}"\n\nTwo sides. Sixty seconds. One verdict.`;
+    const text = `PREWRITTEN VERDICT SAMPLE on "${round.topicText}"\n${winnerLine}\n\n"${v.ruling}"\n\nFictional demo result. No writing was graded.`;
     const url = `${window.location.href.split('#')[0]}#game/verdict`;
     try {
       if (navigator.share) {
-        await navigator.share({ title: 'Verdict', text, url });
+        await navigator.share({ title: 'Verdict sample result', text, url });
       } else {
         await navigator.clipboard.writeText(`${text}\n${url}`);
         setCopied(true);
@@ -274,13 +277,13 @@ export function VerdictScreen({
         <p className="result-why">{v.ruling}</p>
         {v.scoreTieAdjusted && (
           <p className="result-score-note">
-            AI scores tied. Verdict applied its tiebreak and a one-point adjustment.
+            Sample scores tied. The preset verdict applied its tiebreak and a one-point adjustment.
           </p>
         )}
       </section>
 
       {/* Persistent, flat match scoreboard: first-to-N, your name first. */}
-      <div className="match-strip" role="group" aria-label="Match score">
+      <div className="match-strip" role="group" aria-label={`Match score: ${myName} ${myScore}, ${oppName} ${oppScore}. First to ${CONFIG.MATCH_TARGET_WINS}.`}>
         <span className="ms-label">Match · first to {CONFIG.MATCH_TARGET_WINS}</span>
         <span className="ms-dot" aria-hidden>
           &middot;
@@ -294,47 +297,42 @@ export function VerdictScreen({
         </span>
       </div>
 
-      {/* The one primary action, directly under the result where a thumb
-          expects it. */}
-      {capReached ? (
-        <p className="muted">
-          The courthouse is closed for the day. This room has reached its{' '}
-          {CONFIG.MAX_ROUNDS_PER_ROOM}-round limit. Start a fresh game to keep playing.
-        </p>
-      ) : (
-        <>
-          <button className="primary huge" disabled={busy || iAmReady} onClick={onPlayAgain}>
-            {primaryLabel}
-          </button>
-          {statusLine && (
-            <p className="muted" role="status">
-              {statusLine}
-            </p>
-          )}
-        </>
-      )}
-
       </section>
       <aside className="verdict-details">
+      {v.kind === 'judged' && (
+        <section className="feedback-card" aria-label="Coaching for the sample on your side">
+          <div className="feedback-card__head"><h2>Coaching for this sample</h2></div>
+          {fixture && <span className="fixture-label">Prewritten demo feedback</span>}
+          <div className="feedback-point feedback-point--strength"><span>What landed</span><p>{myRemark}</p></div>
+          <div className="feedback-point feedback-point--next"><span>{modelNextStep ? 'Try this' : 'General practice tip'}</span><p>{nextStep}</p></div>
+        </section>
+      )}
+
       {room.selectedTopic && !capReached && (
         <section className="up-next">
           <p className="prompt-kicker">{matchWinner ? 'Play again' : 'Next round'}</p>
-          <h3>{room.selectedTopic.title}</h3>
+          <h2>{room.selectedTopic.title}</h2>
           {onChangeTopic && !iAmReady && <button className="quiet" onClick={onChangeTopic} disabled={busy}>Choose another debate</button>}
         </section>
       )}
-      <details className="disclosure feedback-disclosure">
-        <summary className="disclosure-summary"><span>{v.kind === 'judged' ? 'See your feedback' : 'Round details'}</span><span className="disclosure-chevron" aria-hidden>&#8250;</span></summary>
-        <div className="disclosure-body stack">
-          {v.kind === 'judged' && (
-            <section className="feedback-card" aria-label="Your argument feedback">
-              <div className="feedback-card__head"><h2>A thought for next time</h2></div>
-              {fixture && <span className="fixture-label">Prewritten demo feedback</span>}
-              <div className="feedback-point feedback-point--strength"><span>What landed</span><p>{myRemark}</p></div>
-              <div className="feedback-point feedback-point--next"><span>{modelNextStep ? 'Try this' : 'General practice tip'}</span><p>{nextStep}</p></div>
-            </section>
-          )}
-      {/* Secondary detail, collapsed by default: flat, restrained, no gold. */}
+
+      {capReached ? (
+        <p className="muted">This room reached its {CONFIG.MAX_ROUNDS_PER_ROOM}-round limit. Start a fresh game to keep playing.</p>
+      ) : (
+        <>
+          <button className="primary huge verdict-continue" disabled={busy || iAmReady} onClick={onPlayAgain}>{primaryLabel}</button>
+          {statusLine && <p className="muted" role="status">{statusLine}</p>}
+        </>
+      )}
+
+      <section className="verdict-arguments" aria-labelledby="sample-arguments-heading">
+        <h2 id="sample-arguments-heading">Both prewritten sample arguments</h2>
+        <div className="stack">
+          <ArgumentCard arg={v.args.a} claim={claimA} remark={v.remarkA} isWinner={v.winner === 'A'} isMe={myLabel === 'A'} />
+          <ArgumentCard arg={v.args.b} claim={claimB} remark={v.remarkB} isWinner={v.winner === 'B'} isMe={myLabel === 'B'} />
+        </div>
+      </section>
+
       {v.scores && (
         <details className="disclosure">
           <summary className="disclosure-summary">
@@ -370,34 +368,8 @@ export function VerdictScreen({
         </details>
       )}
 
-      <details className="disclosure">
-        <summary className="disclosure-summary">
-          <span>Read both arguments</span>
-          <span className="disclosure-chevron" aria-hidden>
-            &#8250;
-          </span>
-        </summary>
-        <div className="disclosure-body stack">
-          <ArgumentCard
-            arg={v.args.a}
-            claim={claimA}
-            remark={v.remarkA}
-            isWinner={v.winner === 'A'}
-            isMe={myLabel === 'A'}
-          />
-          <ArgumentCard
-            arg={v.args.b}
-            claim={claimB}
-            remark={v.remarkB}
-            isWinner={v.winner === 'B'}
-            isMe={myLabel === 'B'}
-          />
-        </div>
-      </details>
+      {v.kind === 'judged' && onSubmitFeedback && <ResultResponse key={round.id} response={resultResponse} onSubmit={onSubmitFeedback} />}
 
-      {v.kind === 'judged' && onSubmitFeedback && <ResultResponse response={resultResponse} onSubmit={onSubmitFeedback} />}
-        </div>
-      </details>
       </aside>
       </main>
 
@@ -405,7 +377,7 @@ export function VerdictScreen({
       <div className="row tertiary">
         {round.topicKind !== 'custom' && (
           <button className="quiet" onClick={share}>
-            Share verdict
+            Share sample verdict
           </button>
         )}
         <button className="quiet" onClick={onLeave} disabled={busy}>

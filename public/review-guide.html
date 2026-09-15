@@ -1,1 +1,79 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verdict review guide</title><style>body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:36px 24px;background:#fffdf8;color:#261e17;line-height:1.7}h1{font-size:42px;line-height:1.2}h2{margin-top:38px}a{color:#a93422;text-underline-offset:3px}nav{display:flex;gap:20px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid #e7ddd0}p{max-width:850px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:24px}li{padding:5px 0}@media(max-width:600px){.columns{grid-template-columns:1fr}h1{font-size:34px}}</style></head><body><nav><a href="./">Open interactive demo</a><a href="https://github.com/drlevidruin/verdict-demo">Demo source</a><a href="review-guide.md">Plain text guide</a><a href="screen-gallery.html">Screenshots without JavaScript</a></nav><h1>Review Verdict</h1><p>This is an interactive fictional demo, made for humans and AI reviewers. No login, invitation from a real friend, or API key is needed. All outcomes are prewritten samples. Nothing typed is sent to an AI or evaluated.</p><h2>Suggested walkthrough</h2><p>1. Try a game. Enter a fictional name, choose Surprise me or a topic, and simulate the friend joining. Ready up, write or use a sample argument, then inspect the sample result and match score.</p><p>2. Join instead. Use the game code DEMO, or visit the invitation screen. Codes and links only simulate joining; they do not connect different devices.</p><p>3. Explore group practice. Try the host view, a group and roster, topic sources, and session setup. Compare single-round and tournament settings.</p><p>4. Switch to the participant view. Join FRIDAY, read the demo notice, write an argument, and view sample feedback. Look at both perspectives and try saving a reflection.</p><p>5. Try the host monitor, results, tournament continuation, fictional HTML export, and session deletion. Reset demo restores the examples.</p><p>6. Use the screen picker for countdowns, expired invitations, connection errors, empty submissions, ties, and an unavailable judge. Test a narrow screen as well as desktop.</p><h2>Prompt to share with another AI</h2><p>Review this fictional Verdict demo as someone who has never seen it before: https://drlevidruin.github.io/verdict-demo/</p><p>Try the interactive game and both host and participant Practice views. Use the screen picker to inspect results and failure states. Evaluate clarity of instructions, number of decisions, desktop/mobile layout, accessibility, and whether users know what to do next. Explain the five most useful improvements with the exact screen links and steps you tried. Distinguish observed failures from ideas. Do not infer AI judgment quality, security, or live multiplayer reliability from a static simulation. If your browser cannot execute JavaScript, read the linked guide, demo source, and available screenshots; say which interactions you could not test.</p><h2>What to assess</h2><p>- Can a new visitor explain what Verdict does and begin without help?</p><p>- Are names, Start/Join, assigned sides, readiness, timers, submissions, and scores understandable?</p><p>- Does group practice help people understand both arguments without overwhelming them?</p><p>- Are the fictional-data and prewritten-feedback labels visible at the right moments?</p><p>- Do links, editable fields, recoveries, reset, and exports work?</p><p>- Does the design stay calm on a phone-sized viewport and a wide desktop?</p><h2>Boundaries</h2><p>This is a separately maintained public simulation. UI components are adapted from the working product, while multiplayer, Google sign-in, database storage, judging, and retention are simulated. Demo inputs live in this page&#x27;s memory and clear on refresh/reset. GitHub serves static files and receives normal web requests; the demo has no analytics integration or application backend. Downloading a record creates a file on your device. Copy link shares only the screen address.</p><p>The current product direction is two-person play plus hosted group practice. Solo coaching, relationship counseling, meeting rehearsal, payments, and native app installation are not working features of this demo. The live product&#x27;s intended session retention is 30 days with earlier host deletion; this public demo has no persistent session records.</p><h2>Direct screen links</h2><div class="columns"><section><h3>Quick play</h3><ul><li><a href="./#game/home">Start or join</a></li><li><a href="./#game/topics">Topic library</a></li><li><a href="./#game/invite">Invitation</a></li><li><a href="./#game/lobby">Waiting for a friend</a></li><li><a href="./#game/lobby-full">Ready together</a></li><li><a href="./#game/countdown">Countdown</a></li><li><a href="./#game/writing">Write an argument</a></li><li><a href="./#game/locked">Submitted</a></li><li><a href="./#game/deliberating">Sample judging</a></li><li><a href="./#game/verdict">Round result</a></li><li><a href="./#game/match">Match result</a></li><li><a href="./#game/verdict-loss">Other player wins</a></li><li><a href="./#game/unavailable">Judge unavailable</a></li><li><a href="./#game/forfeit">Empty submission</a></li><li><a href="./#game/dq">Disqualification</a></li><li><a href="./#game/offline">Connection interrupted</a></li><li><a href="./#game/timeup">Time is up</a></li><li><a href="./#game/invite-error">Invitation expired</a></li><li><a href="./#game/tie">Tied round</a></li><li><a href="./#game/error">Submission error</a></li></ul></section><section><h3>Group practice</h3><ul><li><a href="./#practice/groups">Group dashboard</a></li><li><a href="./#practice/signin">Host sign-in</a></li><li><a href="./#practice/group">Group and roster</a></li><li><a href="./#practice/topics">Topic bank</a></li><li><a href="./#practice/setup">Session setup</a></li><li><a href="./#practice/join">Join a group</a></li><li><a href="./#practice/waiting">Participant waiting</a></li><li><a href="./#practice/writing">Participant writing</a></li><li><a href="./#practice/submitted">Submitted</a></li><li><a href="./#practice/feedback">Participant feedback</a></li><li><a href="./#practice/monitor">Host monitor</a></li><li><a href="./#practice/results">Results and export</a></li><li><a href="./#practice/between">Tournament next round</a></li><li><a href="./#practice/deleted">Session deleted</a></li><li><a href="./#practice/privacy">Retention and deletion</a></li></ul></section></div></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Review Verdict</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>body{font:17px/1.65 system-ui,sans-serif;max-width:880px;margin:0 auto;padding:32px 20px;background:#fffdf8;color:#211a13}a{color:#a93624;overflow-wrap:anywhere}nav{display:flex;gap:20px;flex-wrap:wrap}h1,h2,h3{line-height:1.25}h2{margin-top:2em}li{margin:.65em 0}</style>
+</head><body><nav><a href="./">Interactive demo</a><a href="review-guide.md">Plain text guide</a><a href="screen-gallery.html">Screenshots without JavaScript</a><a href="https://github.com/drlevidruin/verdict-demo">Source</a></nav>
+<h1>Review Verdict</h1>
+<p>This is an interactive fictional demo, made for humans and AI reviewers. No login, invitation from a real friend, or API key is needed. All outcomes are prewritten samples. Nothing typed is sent to an AI or evaluated.</p>
+<h2>Suggested walkthrough</h2>
+<ol>
+<li>Try a game. Enter a fictional name, choose Surprise me or a topic, and simulate the friend joining and becoming ready. Ready up, write or use a sample argument, then reveal the prewritten result. The guided game uses a three-second countdown and a sixty-second writing round; demo controls let you pause it.</li>
+<li>Read the result. The winner appears immediately, followed by sample coaching and both sample arguments. Scores are optional detail. Play the next rounds to try new topics and alternating assigned sides. Typed writing is never evaluated.</li>
+<li>Join instead. Use the game code DEMO, or visit the invitation screen. Codes and links only simulate joining; they do not connect different devices.</li>
+<li>Explore group practice. Choose Take the host tour to move through the group, setup, monitor, and results. Compare single-round and tournament settings. Use the participant preview inside the flow to keep custom topic edits.</li>
+<li>Take the participant tour. Join the fictional group with code FRIDAY, receive a side, write an argument, and review preset feedback. Compare both arguments and the other perspective, then try the optional reflection. Host results include both pairs, the tournament final when selected, and a fictional HTML export.</li>
+<li>Open Reviewer tools to inspect individual screens, including paused timers, ties, expired invitations, connection problems, and unavailable judging. Selecting a screen restores a fresh fictional example and replaces in-progress edits. Copy screen link shares that fresh example. Reset demo starts over.</li>
+<li>Try session deletion under Session management in host results. Check cancel and confirm. Test a phone-sized view and desktop, including keyboard navigation.</li>
+</ol>
+<h2>Prompt to share with another AI</h2>
+<p>Review this fictional Verdict demo as someone who has never seen it before: https://drlevidruin.github.io/verdict-demo/</p>
+<p>Try the interactive game and both host and participant Practice views. Open Reviewer tools to inspect fresh examples of results and failure states. Timer examples stay paused until you start them. Evaluate clarity of instructions, number of decisions, desktop/mobile layout, accessibility, and whether users know what to do next. Explain the five most useful improvements with the exact screen links and steps you tried. Distinguish observed failures from ideas. Do not infer AI judgment quality, security, or live multiplayer reliability from a static simulation. If your browser cannot execute JavaScript, read the linked guide, demo source, and available screenshots; say which interactions you could not test.</p>
+<h2>What to assess</h2>
+<ul>
+<li>Can a new visitor explain what Verdict does and begin without help?</li>
+<li>Are names, Start/Join, assigned sides, readiness, timers, submissions, and scores understandable?</li>
+<li>Does group practice help people understand both arguments without overwhelming them?</li>
+<li>Are the fictional-data and prewritten-feedback labels visible at the right moments?</li>
+<li>Do links, editable fields, recoveries, reset, and exports work?</li>
+<li>Does the design stay calm on a phone-sized viewport and a wide desktop?</li>
+</ul>
+<h2>Boundaries</h2>
+<p>This is a separately maintained public simulation. UI components are adapted from the working product, while multiplayer, Google sign-in, database storage, judging, and retention are simulated. Demo inputs live in this page&#x27;s memory and clear on refresh/reset. GitHub serves static files and receives normal web requests; the demo has no analytics integration or application backend. Downloading a record creates a file on your device. Copy link shares only the screen address.</p>
+<p>The current product direction is two-person play plus hosted group practice. Solo coaching, relationship counseling, meeting rehearsal, payments, and native app installation are not working features of this demo. The live product&#x27;s intended session retention is 30 days with earlier host deletion; this public demo has no persistent session records.</p>
+<h2>Review decisions</h2>
+<p><a href="https://github.com/drlevidruin/verdict-demo/blob/main/REVIEW_SYNTHESIS.md">What changed after five external AI reviews</a>.</p>
+<h2>Direct links</h2>
+<h3>Quick play</h3>
+<ul>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/home">Start or join</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/topics">Topic library</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/invite">Invitation</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/lobby">Waiting for a friend</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/lobby-full">Ready together</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/countdown">Countdown</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/writing">Write an argument</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/locked">Game argument submitted</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/deliberating">Sample judging</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/verdict">Round result</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/match">Match result</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/verdict-loss">Other player wins</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/unavailable">Judge unavailable</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/forfeit">Empty submission</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/dq">Disqualification</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/offline">Connection interrupted</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/timeup">Time is up</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/invite-error">Invitation expired</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/tie">Tied round</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#game/error">Submission error</a></li>
+</ul>
+<h3>Group practice</h3>
+<ul>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/groups">Group dashboard</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/signin">Host sign-in</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/group">Group and roster</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/topics">Topic bank</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/setup">Session setup</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/join">Join a group</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/waiting">Participant waiting</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/writing">Participant writing</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/submitted">Practice argument submitted</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/feedback">Participant feedback</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/monitor">Host monitor</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/results">Results and export</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/between">Tournament next round</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/deleted">Session deleted</a></li>
+<li><a href="https://drlevidruin.github.io/verdict-demo/#practice/privacy">Retention and deletion</a></li>
+</ul>
+<h2>Screenshots</h2>
+<p><a href="https://drlevidruin.github.io/verdict-demo/screen-gallery.html">Rendered screens without JavaScript</a>.</p>
+</body></html>

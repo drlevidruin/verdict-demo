@@ -25,6 +25,7 @@
   --hairline: #eae2d5;
   --accent: #e8452b; /* objection red */
   --accent-dark: #c5341d;
+  --action: #d13e27; /* White button text: measured contrast above 4.5:1. */
   --gold: #ffb937; /* winner highlight */
   --pro: #2f7d5b;
   --con: #3457b8;
@@ -259,10 +260,17 @@ button:disabled {
   cursor: default;
 }
 button.primary {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--action);
+  border-color: var(--action);
   color: #fff;
   box-shadow: 0 3px 8px rgba(232, 69, 43, 0.2);
+}
+button.primary:disabled {
+  opacity: 1;
+  background: #e7dfd7;
+  border-color: #d3c7ba;
+  color: #66594b;
+  box-shadow: none;
 }
 button.primary:active {
   background: var(--accent-dark);

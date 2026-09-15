@@ -56,3 +56,26 @@
 .demo-main .hosted-panel { border: 1px solid var(--hairline); box-shadow: 0 3px 14px rgba(27,21,16,.045); }
 
 .demo-stage .app { margin-inline: auto; min-height: calc(100dvh - 220px); }
+
+/* Reviewer utilities are disclosed on demand, outside the product flow. */
+.demo-toolbar { flex-wrap: wrap; }
+.demo-toolbar nav { margin-left: auto; }
+.demo-fictional { display: inline; }
+.demo-reviewer-panel { max-width: 1120px; margin: 0 auto 14px; padding: 18px 24px; background: #f3efe8; border: 1px solid #e2d8cb; border-radius: 0 0 12px 12px; }
+.demo-reviewer-panel[hidden] { display: none; }
+.demo-reviewer-panel__controls { display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+.demo-reviewer-panel .demo-jump { display: grid; gap: 7px; font-size: 12px; font-weight: 600; }
+.demo-reviewer-panel .demo-jump select { width: 245px; max-width: 100%; font-size: 13px; }
+.demo-reviewer-panel .quiet { font-size: 13px; min-height: 40px; }
+.demo-reviewer-panel a { color: #9d3425; font-size: 13px; padding-bottom: 12px; }
+.demo-reviewer-panel p { max-width: 760px; color: #665c50; font-size: 12px; line-height: 1.6; margin-bottom: 0; }
+.demo-copy-status { margin: 0; background: #edf4ec; padding: 12px 24px; text-align: center; color: #344f33; font-size: 13px; }
+@media (max-width:600px) {
+  .demo-toolbar { gap: 12px; }
+  .demo-fictional { margin-left: auto; margin-right: 0; font-size: 10px; }
+  .demo-toolbar nav { width: 100%; justify-content: flex-end; gap: 18px; }
+  .demo-reviewer-panel { margin-inline: 12px; padding: 16px; }
+  .demo-reviewer-panel__controls { gap: 12px; }
+  .demo-reviewer-panel .demo-jump { width: 100%; }
+  .demo-reviewer-panel .demo-jump select { width: 100%; }
+}

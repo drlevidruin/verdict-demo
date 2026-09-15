@@ -1,7 +1,7 @@
 export const GAME_SCREENS = [
   ['home', 'Start or join'], ['topics', 'Topic library'], ['invite', 'Invitation'],
   ['lobby', 'Waiting for a friend'], ['lobby-full', 'Ready together'], ['countdown', 'Countdown'],
-  ['writing', 'Write an argument'], ['locked', 'Submitted'], ['deliberating', 'Sample judging'],
+  ['writing', 'Write an argument'], ['locked', 'Game argument submitted'], ['deliberating', 'Sample judging'],
   ['verdict', 'Round result'], ['match', 'Match result'], ['verdict-loss', 'Other player wins'],
   ['unavailable', 'Judge unavailable'], ['forfeit', 'Empty submission'],
   ['dq', 'Disqualification'], ['offline', 'Connection interrupted'],
@@ -10,7 +10,7 @@ export const GAME_SCREENS = [
 export const PRACTICE_SCREENS = [
   ['groups', 'Group dashboard'], ['signin', 'Host sign-in'], ['group', 'Group and roster'],
   ['topics', 'Topic bank'], ['setup', 'Session setup'], ['join', 'Join a group'],
-  ['waiting', 'Participant waiting'], ['writing', 'Participant writing'], ['submitted', 'Submitted'],
+  ['waiting', 'Participant waiting'], ['writing', 'Participant writing'], ['submitted', 'Practice argument submitted'],
   ['feedback', 'Participant feedback'], ['monitor', 'Host monitor'], ['results', 'Results and export'],
   ['between', 'Tournament next round'], ['deleted', 'Session deleted'], ['privacy', 'Retention and deletion'],
 ] as const;

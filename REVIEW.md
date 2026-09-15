@@ -1,21 +1,27 @@
 # Demo review notes
 
-This review concerns the fictional public demo, not a production launch.
+This review concerns the fictional public demo. It does not establish production readiness.
 
-## Evidence
+## Changes after the external reviews
 
-- TypeScript and production build passed.
-- All 36 documented views were opened on desktop and phone-sized browser viewports.
-- Complete game and Practice flows were checked, including code validation, writing, sample results, reflection, topic edits, tournament, export, deletion, and reset.
-- No live judge, sign-in, database, or analytics requests are made by the demo.
-- Public source and exports contain no credentials or real session records.
+The five supplied AI reviews were checked against the current browser experience and source. [Review decisions](REVIEW_SYNTHESIS.md) records the accepted changes and rejected suggestions.
 
-## First-time reviewer feedback
+The clearest findings were too many competing Practice entry points, buried feedback, timer interruptions during review, unclear simulated actions, and inconsistent results. Practice now has two guided role tours. Short coaching appears before the next-round action, with both sample arguments visible below. Reviewer tools opens isolated examples and timers wait for an explicit start. A guided game retains its normal countdown and writing clock.
 
-The independent reviewer found the collection page calm, attractive, and clear about the two experiences. Mobile stacking was especially effective. The primary remaining design suggestion is to reduce the number of competing actions on the Practice dashboard. Some desktop result screens could use space more efficiently.
+Random topics, next-round topic rotation, topic changes, rematches, required names, failure recovery, score consistency, complete tournament export, deletion confirmation, accessible labels, button contrast, and mobile score wrapping were corrected.
 
-Issues fixed during review included inaccurate AI-judging wording, a timer state-update warning, ambiguous field labels, mobile timer overflow, and state transitions that did not yet behave like the controls promised.
+## Validation
+
+- TypeScript and Vite production build passed.
+- All 36 screens were opened at 320, 390, and 1440 pixels: 108 screen checks.
+- No horizontal overflow, runtime errors, missing main headings, or unlabeled form fields in that route audit.
+- Seven complete browser scenarios passed, covering varied Surprise topics, paused/direct and normal timers, a three-round match and rematch, changing the next topic, named joining and failure recovery, both Practice roles, custom topic edits, reflection, tournament, escaped four-participant export, deletion, and mobile keyboard/reading order.
+- A separate Sol visual reviewer checked desktop and phone layouts. Its final findings about next-action placement, state wording, pair-specific labels, and score wrapping were implemented.
+- Primary-button white text measures 4.74:1 against the revised red. This is not a full accessibility certification.
+- Nine public gallery screenshots were refreshed. The required game browser client screenshot and text state were also inspected.
+
+[Machine-readable check summary](VERIFICATION.json)
 
 ## Limits
 
-This review can assess interface clarity and the simulation. It cannot establish real multiplayer reliability, AI judging quality, retention enforcement, or production readiness. Phone-sized browser checks do not replace physical-device or screen-reader testing.
+The demo uses preset fictional judging, simulated participants, and in-memory edits. These checks cannot establish live multiplayer reliability, AI judging quality, or retention enforcement. Physical-device and screen-reader acceptance remain separate.

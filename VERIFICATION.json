@@ -1,0 +1,54 @@
+{
+  "scope": "Public fictional Verdict demo",
+  "productionBuild": "passed",
+  "screenViews": 108,
+  "uniqueScreens": 36,
+  "viewportWidths": [
+    320,
+    390,
+    1440
+  ],
+  "horizontalOverflow": 0,
+  "runtimeErrors": 0,
+  "missingMainHeadings": 0,
+  "unlabeledFormFields": 0,
+  "outsideOriginApplicationRequests": 0,
+  "primaryButtonTextContrast": 4.741,
+  "flows": [
+    {
+      "name": "game required name and varied Surprise topics",
+      "passed": true
+    },
+    {
+      "name": "direct fixtures pause and explicit timers advance",
+      "passed": true
+    },
+    {
+      "name": "three-round game fresh topics scores and fixture isolation",
+      "passed": true
+    },
+    {
+      "name": "change next topic preserves match and resets readiness",
+      "passed": true
+    },
+    {
+      "name": "join validation and failure recoveries",
+      "passed": true
+    },
+    {
+      "name": "practice tours custom topic reflection tournament export deletion",
+      "passed": true
+    },
+    {
+      "name": "mobile reading order keyboard and review controls",
+      "passed": true
+    }
+  ],
+  "screenshotGalleryViews": 9,
+  "gameScreenshotAndTextState": "verified",
+  "limits": [
+    "Static simulation with preset judging and local state",
+    "Physical-device and screen-reader testing not performed",
+    "No assessment of live multiplayer, live judging, or production retention"
+  ]
+}

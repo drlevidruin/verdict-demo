@@ -9,3 +9,13 @@ Validation: production build and TypeScript pass. Browser flows cover required n
 Review improvements addressed: neutral demo controls, persistent fictional labels, typing focus stability, timer state updates, accessible field labels, source/topic simulation clarity, escaped export, reset semantics, coherent tournament and deletion flows. Remaining refinement: fewer first-view Practice dashboard choices and more compact wide-screen result spacing.
 
 Public release is authorized by the user specifically as a fictional GitHub Pages demo. Production app remains separate and private. No judge service is used by this demo.
+
+## External-review synthesis and implementation
+
+User request: Synthesize the supplied multi-AI feedback, cut through noise, and implement the suggestions we agree with. The target remains the separate public fictional demo and its existing GitHub Pages deployment.
+
+Compared all five reviews against current source and browser behavior. Implemented two guided Practice tours, focused writing, visible sample coaching and arguments, an earlier next-round action, hidden reviewer tools with isolated fixture navigation, explicit demo timer controls, real Surprise randomness, nonrepeating sample topic rotation, names and error recovery, honest sample authorship, coherent pair/final scores, complete escaped export, confirmed deletion, unique field and pair labels, and improved button contrast. Retained the immediate verdict and normal game timing; rejected forced reveals, scope expansion, and claims about nonexistent UI.
+
+During integration, corrected rematch/topic-choice readiness, the countdown duration label, special-fixture score reset, sample rubric totals, and game-state instrumentation. Production build, seven complete browser scenarios, the required game client, and all 36 screens at three sizes passed. No runtime errors or overflow. Updated README, review guide, synthesis, evidence, favicon, and nine screenshots.
+
+No known blocker for this fictional demo. Live judging, multiplayer, storage, and planned retention enforcement remain outside its scope. Physical-device and assistive-technology checks remain separate.

@@ -52,6 +52,29 @@
   max-width: 560px;
 }
 
+.writing-title {
+  margin: 12px auto 4px;
+  max-width: 1120px;
+}
+
+.timer-toggle {
+  justify-self: end;
+  margin: -4px 0 8px;
+}
+
+.verdict-arguments {
+  display: grid;
+  gap: 12px;
+}
+
+.verdict-arguments > h2 {
+  margin: 0;
+}
+
+.verdict-continue {
+  width: 100%;
+}
+
 @media (max-width: 720px) {
   .game-demo-strip {
     align-items: stretch;
@@ -63,5 +86,9 @@
   .game-demo-strip__actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .writing-title {
+    padding: 0 20px;
   }
 }

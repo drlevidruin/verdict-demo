@@ -12,11 +12,12 @@ interface Props {
   busy: boolean;
   error: string | null;
   onReady: () => void;
+  onDemoAdvance?: () => void;
   onChangeTopic?: () => void;
   onLeave: () => void;
 }
 
-export function Lobby({ code, inviteToken, room, uid, readyCount, iAmReady, busy, error, onReady, onChangeTopic, onLeave }: Props) {
+export function Lobby({ code, inviteToken, room, uid, readyCount, iAmReady, busy, error, onReady, onDemoAdvance, onChangeTopic, onLeave }: Props) {
   const [shareStatus, setShareStatus] = useState<string | null>(null);
   const [manualOpen, setManualOpen] = useState(false);
   const players = room.playerOrder.map((p) => ({ uid: p, name: room.players[p]?.name ?? '' }));
@@ -34,19 +35,14 @@ export function Lobby({ code, inviteToken, room, uid, readyCount, iAmReady, busy
     ? `${window.location.href.split('#')[0]}#game/invite`
     : null;
 
-  const shareInvite = async () => {
+  const copyInvite = async () => {
     if (!inviteUrl) return;
     try {
-      if (navigator.share) {
-        await navigator.share({ title: 'Join my Verdict game', text: 'A friendly debate. Sixty seconds a side.', url: inviteUrl });
-      } else {
-        await navigator.clipboard.writeText(inviteUrl);
-        setShareStatus('Link copied. Paste it in a message to your friend.');
-      }
+      await navigator.clipboard.writeText(inviteUrl);
+      setShareStatus('Demo invitation copied. It opens a separate fictional walkthrough, not this room.');
     } catch (error) {
-      if (error instanceof Error && error.name === 'AbortError') return;
       setManualOpen(true);
-      setShareStatus('Sharing did not open. Give your friend the room code below.');
+      setShareStatus('Copying is unavailable here. The fictional room code is shown below.');
     }
   };
 
@@ -74,9 +70,10 @@ export function Lobby({ code, inviteToken, room, uid, readyCount, iAmReady, busy
           )}
         </section>
         <aside className="lobby-side">
-          <h2>{full ? readyHeading : 'Invite a friend.'}</h2>
-          <p className="lobby-intro">{full ? readyIntro : 'Send the link. The game starts when you are both ready.'}</p>
-          {!full && <button className="primary huge" onClick={inviteUrl ? shareInvite : () => setManualOpen(true)} disabled={busy}>{inviteUrl ? (shareStatus?.startsWith('Link copied') ? 'Copy invite link again' : 'Invite a friend') : 'Show room code'}</button>}
+          <h2>{full ? readyHeading : 'Add the second player.'}</h2>
+          <p className="lobby-intro">{full ? readyIntro : 'Advance the walkthrough with Maya, or copy a link to the separate invitation screen.'}</p>
+          {!full && onDemoAdvance && <button className="primary huge" onClick={onDemoAdvance} disabled={busy}>Simulate Maya joining</button>}
+          {!full && <button className="quiet" onClick={inviteUrl ? copyInvite : () => setManualOpen(true)} disabled={busy}>{inviteUrl ? 'Copy demo invitation' : 'Show fictional room code'}</button>}
           {!full && shareStatus && <p className="muted" role="status">{shareStatus}</p>}
           {!full && (
             <details className="lobby-manual" open={manualOpen} onToggle={(event) => setManualOpen(event.currentTarget.open)}>

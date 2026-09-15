@@ -15,6 +15,8 @@ interface Props {
   timeUp: boolean;
   countdownLeft: number;
   writeLeft: number;
+  timerRunning?: boolean;
+  onTimerToggle?: () => void;
   draft: string;
   saveStatus: 'loading' | 'saved' | 'saving' | 'offline';
   onDraftChange: (text: string) => void;
@@ -25,6 +27,10 @@ interface Props {
   oppLocked: boolean;
   busy: boolean;
   error: string | null;
+  advanceLabel?: string;
+  onAdvance?: () => void;
+  recoveryLabel?: string;
+  onRecover?: () => void;
 }
 
 export function Round(props: Props) {
@@ -37,12 +43,16 @@ export function Round(props: Props) {
       <div className="app countdown-shell">
         <Brand small />
         <div className="center" style={{ textAlign: 'center' }}>
+          <h1>Get ready to argue</h1>
           <div className="prompt-kicker">Your side</div>
           <p className="prompt-instruction">Argue that:</p>
           <div className="topic">&ldquo;{claim}&rdquo;</div>
           <div className="countdown-num" role="timer">
             {countdownLeft || 'Go'}
           </div>
+          {props.onTimerToggle && <button className="primary" onClick={props.onTimerToggle}>
+            {props.timerRunning ? 'Pause demo countdown' : countdownLeft < CONFIG.COUNTDOWN_SECONDS ? 'Resume demo countdown' : 'Start demo countdown'}
+          </button>}
         </div>
       </div>
     );
@@ -54,6 +64,7 @@ export function Round(props: Props) {
   return (
     <div className="app writing-shell">
       <header className="game-header"><Brand small /><span className="prompt-kicker">Round {index}</span></header>
+      <h1 className="writing-title">Write your argument</h1>
       <main className="writing-layout">
       <section className="writing-prompt">
       {/* The assignment stays pinned in its own card the whole round. */}
@@ -74,6 +85,11 @@ export function Round(props: Props) {
         </div>
         <div className={`timer-num ${low ? 'low' : ''}`}>{writeLeft}s</div>
       </div>
+      {props.onTimerToggle && !timeUp && !props.myLocked && (
+        <button className="quiet timer-toggle" type="button" onClick={props.onTimerToggle}>
+          {props.timerRunning ? 'Pause demo timer' : writeLeft < CONFIG.WRITING_SECONDS ? 'Resume demo timer' : 'Start 60-second demo timer'}
+        </button>
+      )}
 
       {props.myLocked || timeUp ? (
         <>
@@ -93,10 +109,11 @@ export function Round(props: Props) {
               </>
             ) : (
               <>
-                <span className="locked">Time is up.</span> Submitting your saved argument...
+                <span className="locked">Time is up.</span> Typing is closed. You can inspect the prewritten sample result.
               </>
             )}
           </div>
+          {props.onAdvance && <button className="primary huge" onClick={props.onAdvance}>{props.advanceLabel ?? 'Continue'}</button>}
         </>
       ) : (
         <>
@@ -113,7 +130,6 @@ export function Round(props: Props) {
             autoCorrect="on"
             autoCapitalize="sentences"
             spellCheck={true}
-            autoFocus
           />
           <div className="editor-status">
             <span className={`save-status save-status--${props.saveStatus}`} role="status">
@@ -125,7 +141,7 @@ export function Round(props: Props) {
                   ? 'Saving draft...'
                   : 'Offline. Draft kept on this device.'}
             </span>
-            <span className={`counter ${remaining <= 40 ? 'warn' : ''}`}>{remaining} left</span>
+            <span className={`counter ${remaining <= 40 ? 'warn' : ''}`} aria-live="polite">{remaining} characters left</span>
           </div>
           <div className="lock-dock">
             <button
@@ -152,6 +168,7 @@ export function Round(props: Props) {
           )}
         </>
       )}
+      {props.onRecover && <button className="primary huge" onClick={props.onRecover}>{props.recoveryLabel ?? 'Try again'}</button>}
       </section>
       </main>
     </div>

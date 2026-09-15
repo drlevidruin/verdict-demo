@@ -4,18 +4,19 @@ This is an interactive fictional demo, made for humans and AI reviewers. No logi
 
 ## Suggested walkthrough
 
-1. Try a game. Enter a fictional name, choose Surprise me or a topic, and simulate the friend joining. Ready up, write or use a sample argument, then inspect the sample result and match score.
-2. Join instead. Use the game code DEMO, or visit the invitation screen. Codes and links only simulate joining; they do not connect different devices.
-3. Explore group practice. Try the host view, a group and roster, topic sources, and session setup. Compare single-round and tournament settings.
-4. Switch to the participant view. Join FRIDAY, read the demo notice, write an argument, and view sample feedback. Look at both perspectives and try saving a reflection.
-5. Try the host monitor, results, tournament continuation, fictional HTML export, and session deletion. Reset demo restores the examples.
-6. Use the screen picker for countdowns, expired invitations, connection errors, empty submissions, ties, and an unavailable judge. Test a narrow screen as well as desktop.
+1. Try a game. Enter a fictional name, choose Surprise me or a topic, and simulate the friend joining and becoming ready. Ready up, write or use a sample argument, then reveal the prewritten result. The guided game uses a three-second countdown and a sixty-second writing round; demo controls let you pause it.
+2. Read the result. The winner appears immediately, followed by sample coaching and both sample arguments. Scores are optional detail. Play the next rounds to try new topics and alternating assigned sides. Typed writing is never evaluated.
+3. Join instead. Use the game code DEMO, or visit the invitation screen. Codes and links only simulate joining; they do not connect different devices.
+4. Explore group practice. Choose Take the host tour to move through the group, setup, monitor, and results. Compare single-round and tournament settings. Use the participant preview inside the flow to keep custom topic edits.
+5. Take the participant tour. Join the fictional group with code FRIDAY, receive a side, write an argument, and review preset feedback. Compare both arguments and the other perspective, then try the optional reflection. Host results include both pairs, the tournament final when selected, and a fictional HTML export.
+6. Open Reviewer tools to inspect individual screens, including paused timers, ties, expired invitations, connection problems, and unavailable judging. Selecting a screen restores a fresh fictional example and replaces in-progress edits. Copy screen link shares that fresh example. Reset demo starts over.
+7. Try session deletion under Session management in host results. Check cancel and confirm. Test a phone-sized view and desktop, including keyboard navigation.
 
 ## Prompt to share with another AI
 
 Review this fictional Verdict demo as someone who has never seen it before: https://drlevidruin.github.io/verdict-demo/
 
-Try the interactive game and both host and participant Practice views. Use the screen picker to inspect results and failure states. Evaluate clarity of instructions, number of decisions, desktop/mobile layout, accessibility, and whether users know what to do next. Explain the five most useful improvements with the exact screen links and steps you tried. Distinguish observed failures from ideas. Do not infer AI judgment quality, security, or live multiplayer reliability from a static simulation. If your browser cannot execute JavaScript, read the linked guide, demo source, and available screenshots; say which interactions you could not test.
+Try the interactive game and both host and participant Practice views. Open Reviewer tools to inspect fresh examples of results and failure states. Timer examples stay paused until you start them. Evaluate clarity of instructions, number of decisions, desktop/mobile layout, accessibility, and whether users know what to do next. Explain the five most useful improvements with the exact screen links and steps you tried. Distinguish observed failures from ideas. Do not infer AI judgment quality, security, or live multiplayer reliability from a static simulation. If your browser cannot execute JavaScript, read the linked guide, demo source, and available screenshots; say which interactions you could not test.
 
 ## What to assess
 
@@ -32,6 +33,10 @@ This is a separately maintained public simulation. UI components are adapted fro
 
 The current product direction is two-person play plus hosted group practice. Solo coaching, relationship counseling, meeting rehearsal, payments, and native app installation are not working features of this demo. The live product's intended session retention is 30 days with earlier host deletion; this public demo has no persistent session records.
 
+## Review decisions
+
+[What changed after five external AI reviews](https://github.com/drlevidruin/verdict-demo/blob/main/REVIEW_SYNTHESIS.md).
+
 ## Direct links
 
 ### Quick play
@@ -43,7 +48,7 @@ The current product direction is two-person play plus hosted group practice. Sol
 - [Ready together](https://drlevidruin.github.io/verdict-demo/#game/lobby-full)
 - [Countdown](https://drlevidruin.github.io/verdict-demo/#game/countdown)
 - [Write an argument](https://drlevidruin.github.io/verdict-demo/#game/writing)
-- [Submitted](https://drlevidruin.github.io/verdict-demo/#game/locked)
+- [Game argument submitted](https://drlevidruin.github.io/verdict-demo/#game/locked)
 - [Sample judging](https://drlevidruin.github.io/verdict-demo/#game/deliberating)
 - [Round result](https://drlevidruin.github.io/verdict-demo/#game/verdict)
 - [Match result](https://drlevidruin.github.io/verdict-demo/#game/match)
@@ -67,7 +72,7 @@ The current product direction is two-person play plus hosted group practice. Sol
 - [Join a group](https://drlevidruin.github.io/verdict-demo/#practice/join)
 - [Participant waiting](https://drlevidruin.github.io/verdict-demo/#practice/waiting)
 - [Participant writing](https://drlevidruin.github.io/verdict-demo/#practice/writing)
-- [Submitted](https://drlevidruin.github.io/verdict-demo/#practice/submitted)
+- [Practice argument submitted](https://drlevidruin.github.io/verdict-demo/#practice/submitted)
 - [Participant feedback](https://drlevidruin.github.io/verdict-demo/#practice/feedback)
 - [Host monitor](https://drlevidruin.github.io/verdict-demo/#practice/monitor)
 - [Results and export](https://drlevidruin.github.io/verdict-demo/#practice/results)

@@ -23,7 +23,7 @@ function surpriseSelection(): TopicSelectionInput {
     topic.editorialStatus === 'published' && topic.allowedModes.includes('quickPlay'));
   const featured = eligible.filter((topic) => topic.featured && topic.tone === 'playful');
   const pool = featured.length ? featured : eligible;
-  return { kind: 'catalog', topicId: pool[0].id };
+  return { kind: 'catalog', topicId: pool[Math.floor(Math.random() * pool.length)].id };
 }
 
 export function Home({ loading, error, onCreate, onJoin, onPracticeWithGroup, onJoinGroup }: Props) {
@@ -31,13 +31,17 @@ export function Home({ loading, error, onCreate, onJoin, onPracticeWithGroup, on
   const [code, setCode] = useState('');
   const [mode, setMode] = useState<'start' | 'join'>('start');
   const [choosingTopic, setChoosingTopic] = useState(false);
+  const [nameError, setNameError] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const trimmedName = name.trim();
 
   const validName = () => {
     const input = formRef.current?.querySelector<HTMLInputElement>('input[name="playerName"]');
-    input?.setCustomValidity(trimmedName ? '' : 'Enter your name to play.');
-    return formRef.current?.reportValidity() ?? false;
+    const message = trimmedName ? '' : 'Add a name so the sample scoreboard has someone to cheer for.';
+    input?.setCustomValidity(message);
+    setNameError(message || null);
+    if (!trimmedName) input?.focus();
+    return !!trimmedName;
   };
 
   if (choosingTopic) return <TopicLibrary busy={loading} error={error}
@@ -59,7 +63,7 @@ export function Home({ loading, error, onCreate, onJoin, onPracticeWithGroup, on
               <button type="button" aria-pressed={mode === 'start'} disabled={loading} onClick={() => setMode('start')}>Start a game</button>
               <button type="button" aria-pressed={mode === 'join'} disabled={loading} onClick={() => setMode('join')}>Join a game</button>
             </div>
-            <form ref={formRef} className="play-entry__form" onSubmit={(event) => {
+            <form ref={formRef} className="play-entry__form" noValidate onSubmit={(event) => {
               event.preventDefault();
               if (loading || !validName()) return;
               if (mode === 'start') onCreate(trimmedName, surpriseSelection());
@@ -71,8 +75,11 @@ export function Home({ loading, error, onCreate, onJoin, onPracticeWithGroup, on
               <label className="field">Your name
                 <input name="playerName" required value={name} maxLength={20} autoComplete="nickname"
                   placeholder="e.g. Alex" disabled={loading}
-                  onChange={(event) => { event.target.setCustomValidity(''); setName(event.target.value); }} />
+                  aria-describedby={nameError ? 'game-name-error' : undefined}
+                  aria-invalid={!!nameError}
+                  onChange={(event) => { event.target.setCustomValidity(''); setNameError(null); setName(event.target.value); }} />
               </label>
+              {nameError && <p className="error" id="game-name-error" role="alert">{nameError}</p>}
               {mode === 'join' && <label className="field">Game code
                 <input className="code" required pattern="[A-Za-z]{4}" title="Enter the four-letter game code."
                   value={code} onChange={(event) => setCode(event.target.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 4))}

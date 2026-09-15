@@ -2,32 +2,37 @@ interface Props {
   showRetry: boolean;
   longWait: boolean;
   onRetry: () => void;
+  title?: string;
+  message?: string;
+  actionLabel?: string;
+  onAdvance?: () => void;
 }
 
-export function Deliberating({ showRetry, longWait, onRetry }: Props) {
+export function Deliberating({ showRetry, longWait, onRetry, title = 'The sample judge is deciding', message, actionLabel, onAdvance }: Props) {
   return (
     <div className="app">
       <div className="deliberate">
         <div className="gavel" aria-hidden>
           &#128296;
         </div>
-        <h2>The judge is deciding...</h2>
+        <h1>{title}</h1>
         {showRetry ? (
           <>
             <p className="error" aria-live="polite">
-              The verdict is taking longer than expected. Your arguments are still safe.
+              {message ?? 'The sample judge is unavailable. Both prewritten arguments are still safe.'}
             </p>
             <button className="primary" onClick={onRetry}>
-              Try again
+              {actionLabel ?? 'Try sample result again'}
             </button>
           </>
         ) : (
           <p className="muted" role="status">
             {longWait
-              ? 'Still comparing both arguments. Keep this page open.'
-              : 'Comparing both arguments. This usually takes a moment.'}
+              ? 'The prewritten sample result is ready whenever you choose to continue.'
+              : 'No AI call is running. Continue when you are ready to inspect the sample result.'}
           </p>
         )}
+        {!showRetry && onAdvance && <button className="primary huge" onClick={onAdvance}>{actionLabel ?? 'Show prewritten sample result'}</button>}
       </div>
     </div>
   );
